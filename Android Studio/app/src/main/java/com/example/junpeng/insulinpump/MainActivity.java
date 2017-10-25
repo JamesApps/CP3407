@@ -4,6 +4,8 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -11,37 +13,39 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-
-
+    
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            //FragmentManager fm = getFragmentManager();
+            Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    //fm.beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                    selectedFragment = HomeFragment.newInstance();
                     return true;
                 case R.id.navigation_history:
-                    mTextMessage.setText(R.string.title_history);
-                    //fm.beginTransaction().replace(R.id.container, new HistoryFragment()).commit();
+                    selectedFragment = HistoryFragment.newInstance();
+                    //mTextMessage.setText(R.string.title_history);
                     return true;
                 case R.id.navigation_driprate:
-                    mTextMessage.setText(R.string.title_driprate);
-                    //fm.beginTransaction().replace(R.id.container, new DripFragment()).commit();
+                    selectedFragment = DripFragment.newInstance();
+                    //mTextMessage.setText(R.string.title_driprate);
                     return true;
                 case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_settings);
-                    //fm.beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
+                    selectedFragment = SettingsFragment.newInstance();
+                    //mTextMessage.setText(R.string.title_settings);
                     return true;
                 case R.id.navigation_insulin:
-                    mTextMessage.setText(R.string.title_insulin);
-                    //fm.beginTransaction().replace(R.id.container, new InsulinFragment()).commit();
+                    selectedFragment = InsulinFragment.newInstance();
+                    //mTextMessage.setText(R.string.title_insulin);
                     return true;
             }
-            return false;
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.content, selectedFragment);
+            transaction.commit();
+            return true;
+            //return false;
         }
 
     };
