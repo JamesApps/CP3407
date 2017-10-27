@@ -83,15 +83,96 @@ def create_db():
             c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name6, cn=str(column), ct=field))
 
 
-# Required Functions
+def alarm():
+    # Alarm Functions
+    # Battery low - The voltage of the battery has fallen to less than 0.5V
+    battery_low = False
+
+    # Sensor failure - The self-test of the sugar sensor has resulted in an error
+    sensor_failure = False
+
+    # Pump failure - The self-test of the pump has resulted in an error
+    pump_failure = False
+
+    # Delivery failure - It has not been possible to deliver the specified amount of insulin
+    # (e.g. the needle may be blocked or incorrectly inserted)
+    delivery_failure = False
+
+    # Needle assembly removed - The user has removed the needle assembly
+    needle_removed = False
+
+    # Insulin reservoir removed - The user has removed the insulin reservoir
+    reservoir_removed = False
+
+    # Low insulin level - The level of insulin is low (indicating that the reservoir should be changed).
+    low_insulin = False
+
+
 # Pump Control - inject insulin
-# Clock Input
-# Alarm
-# External Device Connection
-# Power Management
-# Display??
-# Physical Key Input - Key Pad
+
+
+def clock():
+    # Get clock input
+    clock = float
+
+    # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
+    # cumulative dose of insulin delivered is reset to 0.
+
+
+
+
 # Sensors - Temp, Pressure, Blood Glucose level
+
+# A blood sugar sensor, which measures the current blood sugar reading in
+# micrograms/millilitre. This is updated every 10 minutes. The value of Reading? is normally between 1 and 35.
+# r0, r1, and r2 maintain information about the last three readings from the sugar
+# sensor. r2 holds the current reading, r1 the previous reading and r0 the reading
+# before that. These are used to compute the rate of change of blood sugar readings
+
+# capacity represents the capacity of the system’s insulin reservoir and
+# insulin_available represents the amount of insulin in the reservoir that is currently
+# available for delivery.
+
+# A hardware test unit, which runs a self-test on the hardware every 30 seconds.
+# Power Management
+
+
+
+def insulin_pump_state():
+    # switch?: (off, manual, auto)
+    # ManualDeliveryButton?: N
+    # Reading?: N
+    # HardwareTest?: (OK, batterylow, pumpfail, sensorfail, deliveryfail)
+    # InsulinReservoir?: (present, notpresent)
+    # Needle?: (present, notpresent)
+    # clock?: TIME
+    #
+    # # Output device definition
+    # alarm! = (on, off)
+    # display1!, P string
+    # display2!: string
+    # clock!: TIME
+    # dose!: N
+    #
+    # # State variables used for dose computation
+    # status: (running, warning, error)
+    # r0, r1, r2: N
+    # capacity, insulin_available : N
+    # max_daily_dose, max_single_dose, minimum_dose: N
+    # safemin, safemax: N
+    # CompDose, cumulative_dose: N
+
+
+
+
+# Pump configuration parameters
+capacity = 100
+safemin = 6
+safemax = 14
+max_daily_dose = 25
+max_single_dose = 4
+minimum_dose = 1
+
 
 def main():
     # Main Function
@@ -105,6 +186,15 @@ def main():
     # Logging Loop
     while True:
         print("Logging Loop Started")
+
+        # Check Pump State
+        # Insulin Pump States:
+        # Startup
+        # Run
+        # Manual
+        # Test
+        # Reset
+
 
 
 if __name__ == '__main__':
