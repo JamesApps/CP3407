@@ -8,19 +8,6 @@ from sqlite3 import Error
 sqlite_file = 'insulin_pump.sqlite'  # name of the sqlite database file
 
 
-# Required Functions
-# Memory - Database Need to use sql database
-# Use SQLite
-
-# Pump Control - inject insulin
-# Clock Input
-# Alarm
-# External Device Connection
-# Power Management
-# Display??
-# Physical Key Input - Key Pad
-# Sensors - Temp, Pressure, Blood Glucose level
-
 def create_db():
     # Create database if not already created
 
@@ -96,14 +83,28 @@ def create_db():
             c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name6, cn=str(column), ct=field))
 
 
+# Required Functions
+# Pump Control - inject insulin
+# Clock Input
+# Alarm
+# External Device Connection
+# Power Management
+# Display??
+# Physical Key Input - Key Pad
+# Sensors - Temp, Pressure, Blood Glucose level
+
 def main():
     # Main Function
-    print("Hello")
 
+    # SQLite Database
     if os.path.isfile(sqlite_file):
         pass
     else:
         create_db()
+
+    # Logging Loop
+    while True:
+        print("Logging Loop Started")
 
 
 if __name__ == '__main__':
