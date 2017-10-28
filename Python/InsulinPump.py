@@ -3,7 +3,7 @@
 import os.path
 import sqlite3
 from sqlite3 import Error
-from Clock import Clock
+import Clock
 
 # Pump configuration parameters
 capacity = 100
@@ -104,31 +104,89 @@ def state_run(insulin_available, cumulative_dose):
         # Raise Error
         print('Cumulative dose exceeds max daily dose')
     else:
-        print("sugar level")# SUGAR_LOW ∨ SUGAR_OK ∨ SUGAR_HIGH
+        # Get sugar level from database
+
+        print("sugar level")
+
+        # Get Comp Dose
+        compdose = get_compdose()
 
         # If the computed insulin dose is zero, don’t deliver any insulin
-        # CompDose = 0 ⇒ dose! = 0
+        if compdose == 0:
+            # Do nothing
+            pass
 
-        # // The maximum daily dose would be exceeded if the computed dose was delivered
-        # CompDose + cumulative_dose > max_daily_dose ⇒ alarm! = on
-        # ∧ status’ = warning ∧ dose! = max_daily_dose – cumulative_dose
+        # The maximum daily dose would be exceeded if the computed dose was delivered
+        elif (compdose + cumulative_dose) > max_daily_dose:
+            print("Max daily dose exceeded")
+            # alarm
+
+        # The normal situation. If maximum single dose is not exceeded then deliver computed dose
+        elif (compdose + cumulative_dose) < max_daily_dose and compdose <= max_single_dose:
+            dose = compdose
+
+        # The single dose computed is too high. Restrict the dose delivered to the maximum single dose
+        elif compdose > max_single_dose:
+            dose = max_single_dose
+
+        insulin_available += dose
+        cumulative_dose += dose
+
+        if insulin_available <= max_single_dose * 4:
+            print("Low insulin")
+            # alarm
 
 
-        # // The normal situation. If maximum single dose is not exceeded then deliver computed
-        # dose
-        # CompDose + cumulative_dose < max_daily_dose ⇒
-        # (CompDose ≤ max_single_dose ⇒ dose! = CompDose
+def get_compdose(r0, r1, r2):
+    # r0, r1, and r2 maintain information about the last three readings from the sugar
+    # sensor. r2 holds the current reading, r1 the previous reading and r0 the reading
+    # before that. These are used to compute the rate of change of blood sugar readings
 
-        # // The single dose computed is too high. Restrict the dose delivered to the maximum single
-        # dose
-        # CompDose > max_single_dose ⇒ dose! = max_single_dose
-        #  )
-        # insulin_available’ = insulin_available – dose!
-        # cumulative_dose’ = cumulative_dose + dose!
-        # insulin_available ≤ max_single_dose * 4 ⇒ status’ = warning ∧ display1! =
-        # display1! ∪ “Insulin low”
-        # r1’ = r2
-        # r0’ = r1
+    # SUGAR_LOW
+    if r2 < safemin:
+        compdose = 0
+        # alarm low sugar
+
+    # SUGAR_OK
+    elif safemin <= r2 <= safemax:
+        # sugar level stable or falling
+        if r2 <= r1:
+            compdose = 0
+
+        # sugar level increasing but rate of increase falling
+        elif r2 > r1 and (r2-r1) < (r1-r0):
+            compdose = 0
+
+        # sugar level increasing and rate of increase increasing compute dose a minimum dose must be delivered
+        # if rounded to zero
+        elif r2 > r1 and (r2-r1) >= (r1-r0) and (round((r2-r1)/4) == 0):
+            compdose = minimum_dose
+
+        elif r2 > r1 and (r2-r1) >= (r1-r0) and (round((r2-r1)/4) > 0):
+            compdose = round((r2-r1)/4)
+
+    # SUGAR_HIGH
+    elif r2 > safemax:
+        # sugar level increasing. Round down if below 1 unit.
+        if r2 > r1 and (round((r2-r1)/4) == 0):
+            compdose = minimum_dose
+
+        elif r2 > r1 and (round((r2-r1)/4) > 0):
+            compdose = round((r2-r1)/4)
+
+        # sugar level stable
+        elif r2 == r1:
+            compdose = minimum_dose
+
+        # sugar level falling and rate of decrease increasing
+        elif r2 < r1 and (r2-r1) <= (r1-r0):
+            compdose = 0
+
+        # sugar level falling and rate of decrease decreasing
+        elif r2 < r1 and (r2-r1) > (r1-r0):
+            compdose = minimum_dose
+    return compdose
+
 
 def state_manual():
     print("Manual")
@@ -141,6 +199,7 @@ def state_manual():
     # dose! = ManualDeliveryButton?
     # cumulative_dose’ = cumulative_dose + dose!
     # insulin_available’ = insulin_available – dose!
+
 
 def state_startup():
     print("Startup")
@@ -192,34 +251,44 @@ def state_test():
     # )
 
 
-def alarm():
+def alarm(function):
     # Alarm Functions
     # Battery low - The voltage of the battery has fallen to less than 0.5V
-    battery_low = False
+    if function == "battery_low":
+        print("battery_low")
 
     # Sensor failure - The self-test of the sugar sensor has resulted in an error
-    sensor_failure = False
+    if function == "sensor_failure":
+        print("sensor_failure")
 
     # Pump failure - The self-test of the pump has resulted in an error
-    pump_failure = False
+    if function == "pump_failure":
+        print("pump_failure")
 
     # Delivery failure - It has not been possible to deliver the specified amount of insulin
     # (e.g. the needle may be blocked or incorrectly inserted)
-    delivery_failure = False
+    if function == "delivery_failure":
+        print("delivery_failure")
+
 
     # Needle assembly removed - The user has removed the needle assembly
-    needle_removed = False
+    if function == "needle_removed":
+        print("needle_removed")
 
     # Insulin reservoir removed - The user has removed the insulin reservoir
-    reservoir_removed = False
+    if function == "reservoir_removed":
+        print("reservoir_removed")
 
     # Low insulin level - The level of insulin is low (indicating that the reservoir should be changed).
-    low_insulin = False
+    if function == "low_insulin":
+        print("low_insulin")
 
 
 def main():
     # Main Function
-    Clock()
+    clock = Clock.Clock()
+    hours = clock.hours
+    print(hours)
 
     # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
     # cumulative dose of insulin delivered is reset to 0.

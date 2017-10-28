@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffa629f9-7b7a-47ea-abae-97492d102da7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/James.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Python/BloodGlucose.py" afterPath="$PROJECT_DIR$/Python/BloodGlucose.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Python/InsulinPump.py" afterPath="$PROJECT_DIR$/Python/InsulinPump.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Python/Temperature.py" afterPath="$PROJECT_DIR$/Python/Temperature.py" />
     </list>
     <ignored path="CP3407.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,7 +20,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CP3407$InsulinPump.coverage" NAME="InsulinPump Coverage Results" MODIFIED="1509169565012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python" />
+    <SUITE FILE_PATH="coverage/CP3407$InsulinPump.coverage" NAME="InsulinPump Coverage Results" MODIFIED="1509170907876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,35 +31,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="InsulinPump.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InsulinPump.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Python/InsulinPump.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.33840948">
+              <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
               <folding>
                 <element signature="e#38#52#0" expanded="true" />
-                <marker date="1509169717173" expanded="true" signature="2220:2249" placeholder="CREATE TABLE... missing_value" />
-                <marker date="1509169717173" expanded="true" signature="2457:2492" placeholder="ALTER TABLE missing_value... " />
-                <marker date="1509169717173" expanded="true" signature="2586:2615" placeholder="CREATE TABLE... missing_value" />
-                <marker date="1509169717173" expanded="true" signature="2823:2858" placeholder="ALTER TABLE missing_value... " />
-                <marker date="1509169717173" expanded="true" signature="2952:2981" placeholder="CREATE TABLE... missing_value" />
-                <marker date="1509169717173" expanded="true" signature="3189:3224" placeholder="ALTER TABLE missing_value... " />
-                <marker date="1509169717173" expanded="true" signature="3318:3347" placeholder="CREATE TABLE... missing_value" />
-                <marker date="1509169717173" expanded="true" signature="3555:3590" placeholder="ALTER TABLE missing_value... " />
-                <marker date="1509169717173" expanded="true" signature="3684:3713" placeholder="CREATE TABLE... missing_value" />
-                <marker date="1509169717173" expanded="true" signature="3921:3956" placeholder="ALTER TABLE missing_value... " />
-                <marker date="1509169717173" expanded="true" signature="4050:4079" placeholder="CREATE TABLE... missing_value" />
-                <marker date="1509169717173" expanded="true" signature="4287:4322" placeholder="ALTER TABLE missing_value... " />
+                <element signature="e#345#4366#0" expanded="false" />
+                <marker date="1509173188385" expanded="true" signature="2209:2238" placeholder="CREATE TABLE... missing_value" />
+                <marker date="1509173188385" expanded="true" signature="2446:2481" placeholder="ALTER TABLE missing_value... " />
+                <marker date="1509173188385" expanded="true" signature="2575:2604" placeholder="CREATE TABLE... missing_value" />
+                <marker date="1509173188385" expanded="true" signature="2812:2847" placeholder="ALTER TABLE missing_value... " />
+                <marker date="1509173188385" expanded="true" signature="2941:2970" placeholder="CREATE TABLE... missing_value" />
+                <marker date="1509173188385" expanded="true" signature="3178:3213" placeholder="ALTER TABLE missing_value... " />
+                <marker date="1509173188385" expanded="true" signature="3307:3336" placeholder="CREATE TABLE... missing_value" />
+                <marker date="1509173188385" expanded="true" signature="3544:3579" placeholder="ALTER TABLE missing_value... " />
+                <marker date="1509173188385" expanded="true" signature="3673:3702" placeholder="CREATE TABLE... missing_value" />
+                <marker date="1509173188385" expanded="true" signature="3910:3945" placeholder="ALTER TABLE missing_value... " />
+                <marker date="1509173188385" expanded="true" signature="4039:4068" placeholder="CREATE TABLE... missing_value" />
+                <marker date="1509173188385" expanded="true" signature="4276:4311" placeholder="ALTER TABLE missing_value... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Clock.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BloodGlucose.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python/BloodGlucose.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Temperature.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python/Temperature.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Clock.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Python/Clock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71912014">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="82" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -80,8 +101,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Python/InsulinPump.py" />
         <option value="$PROJECT_DIR$/Python/Clock.py" />
+        <option value="$PROJECT_DIR$/Python/Temperature.py" />
+        <option value="$PROJECT_DIR$/Python/BloodGlucose.py" />
+        <option value="$PROJECT_DIR$/Python/InsulinPump.py" />
       </list>
     </option>
   </component>
@@ -428,7 +451,13 @@
       <option name="project" value="LOCAL" />
       <updated>1509169727674</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Required Push from pycharm">
+      <created>1509169765674</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1509169765674</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -441,8 +470,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -475,41 +504,59 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge clock and current pump script" />
     <MESSAGE value="Time format" />
-    <option name="LAST_COMMIT_MESSAGE" value="Time format" />
+    <MESSAGE value="Required Push from pycharm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Required Push from pycharm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Python/InsulinPump.py">
+    <entry file="file://$PROJECT_DIR$/Python/Clock.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <caret line="26" column="82" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
           <folding>
-            <element signature="e#38#52#0" expanded="true" />
-            <marker date="1509169717173" expanded="true" signature="2220:2249" placeholder="CREATE TABLE... missing_value" />
-            <marker date="1509169717173" expanded="true" signature="2457:2492" placeholder="ALTER TABLE missing_value... " />
-            <marker date="1509169717173" expanded="true" signature="2586:2615" placeholder="CREATE TABLE... missing_value" />
-            <marker date="1509169717173" expanded="true" signature="2823:2858" placeholder="ALTER TABLE missing_value... " />
-            <marker date="1509169717173" expanded="true" signature="2952:2981" placeholder="CREATE TABLE... missing_value" />
-            <marker date="1509169717173" expanded="true" signature="3189:3224" placeholder="ALTER TABLE missing_value... " />
-            <marker date="1509169717173" expanded="true" signature="3318:3347" placeholder="CREATE TABLE... missing_value" />
-            <marker date="1509169717173" expanded="true" signature="3555:3590" placeholder="ALTER TABLE missing_value... " />
-            <marker date="1509169717173" expanded="true" signature="3684:3713" placeholder="CREATE TABLE... missing_value" />
-            <marker date="1509169717173" expanded="true" signature="3921:3956" placeholder="ALTER TABLE missing_value... " />
-            <marker date="1509169717173" expanded="true" signature="4050:4079" placeholder="CREATE TABLE... missing_value" />
-            <marker date="1509169717173" expanded="true" signature="4287:4322" placeholder="ALTER TABLE missing_value... " />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python/Clock.py">
+    <entry file="file://$PROJECT_DIR$/Python/Temperature.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71912014">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python/BloodGlucose.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python/InsulinPump.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33840948">
+          <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#38#52#0" expanded="true" />
+            <element signature="e#345#4366#0" expanded="false" />
+            <marker date="1509173188385" expanded="true" signature="2209:2238" placeholder="CREATE TABLE... missing_value" />
+            <marker date="1509173188385" expanded="true" signature="2446:2481" placeholder="ALTER TABLE missing_value... " />
+            <marker date="1509173188385" expanded="true" signature="2575:2604" placeholder="CREATE TABLE... missing_value" />
+            <marker date="1509173188385" expanded="true" signature="2812:2847" placeholder="ALTER TABLE missing_value... " />
+            <marker date="1509173188385" expanded="true" signature="2941:2970" placeholder="CREATE TABLE... missing_value" />
+            <marker date="1509173188385" expanded="true" signature="3178:3213" placeholder="ALTER TABLE missing_value... " />
+            <marker date="1509173188385" expanded="true" signature="3307:3336" placeholder="CREATE TABLE... missing_value" />
+            <marker date="1509173188385" expanded="true" signature="3544:3579" placeholder="ALTER TABLE missing_value... " />
+            <marker date="1509173188385" expanded="true" signature="3673:3702" placeholder="CREATE TABLE... missing_value" />
+            <marker date="1509173188385" expanded="true" signature="3910:3945" placeholder="ALTER TABLE missing_value... " />
+            <marker date="1509173188385" expanded="true" signature="4039:4068" placeholder="CREATE TABLE... missing_value" />
+            <marker date="1509173188385" expanded="true" signature="4276:4311" placeholder="ALTER TABLE missing_value... " />
           </folding>
         </state>
       </provider>
