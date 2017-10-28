@@ -23,6 +23,7 @@ class Clock(object):
         self.seconds = second
 
     def printTime(self):
+        # Time in hh:mm:ss
         print("{:02}:{:02}:{:02}" .format(self.hours, self.minutes, self.seconds))
 
     def tickUp(self):
