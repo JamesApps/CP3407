@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -23,23 +22,23 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     selectedFragment = HomeFragment.newInstance();
-                    return true;
+                    break;
                 case R.id.navigation_history:
                     selectedFragment = HistoryFragment.newInstance();
                     //mTextMessage.setText(R.string.title_history);
-                    return true;
+                    break;
                 case R.id.navigation_driprate:
                     selectedFragment = DripFragment.newInstance();
                     //mTextMessage.setText(R.string.title_driprate);
-                    return true;
+                    break;
                 case R.id.navigation_settings:
                     selectedFragment = SettingsFragment.newInstance();
                     //mTextMessage.setText(R.string.title_settings);
-                    return true;
+                    break;
                 case R.id.navigation_insulin:
                     selectedFragment = InsulinFragment.newInstance();
                     //mTextMessage.setText(R.string.title_insulin);
-                    return true;
+                    break;
             }
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.content, selectedFragment);
@@ -48,16 +47,22 @@ public class MainActivity extends AppCompatActivity {
             //return false;
         }
 
+
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content, HomeFragment.newInstance());
+        transaction.commit();
+
     }
 
 }
