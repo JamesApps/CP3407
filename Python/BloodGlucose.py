@@ -10,14 +10,14 @@ class BloodGlucose:
     def __init__(self):
         self.bg = 20.0
         self.safeLevels = [1, 35]
-        self.alert = 0
+        self.alert = False
 
     def getBG(self):
         self.bg = self.bg + self.randomGenerator(-2.0, 2.0)
         if self.bg < 1 or self.bg > 35:
-            self.alert = 1
+            self.alert = True
         else:
-            self.alert = 0
+            self.alert = False
         return self.bg, self.alert
 
     # manually sets the safe levels for blood glucose #
