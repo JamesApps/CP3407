@@ -173,6 +173,8 @@ max_daily_dose = 25
 max_single_dose = 4
 minimum_dose = 1
 
+STATE = ""
+
 
 def main():
     # Main Function
@@ -188,12 +190,22 @@ def main():
         print("Logging Loop Started")
 
         # Check Pump State
-        # Insulin Pump States:
-        # Startup
-        # Run
-        # Manual
-        # Test
-        # Reset
+        while STATE == "Startup":
+            print("startup")
+
+        while STATE == "Run":
+            print("Run")
+
+        while STATE == "Manual":
+            print("Manual")
+
+        while STATE == "Test":
+            print("Test")
+
+        while STATE == "Reset":
+            print("Reset")
+
+
 
 
 
