@@ -4,19 +4,19 @@ import time
 class Clock:
 
     def __init__(self, hour, minute, second):
-        #initialisation using set time#
+        # initialisation using set time #
         self.hours = hour
         self.minutes = minute
         self.seconds = second
         self.printTime()
 
     def __init__(self):
-        #initialisation defaults to using local time#
+        # initialisation defaults to using local time #
         self.setLocalTime()
         self.printTime()
 
     def setClock(self, hour, minute, second):
-        #setting method#
+        # setting method #
         self.hours = hour
         self.minutes = minute
         self.seconds = second
@@ -25,7 +25,7 @@ class Clock:
         print("Current time is "+str(self.hours)+" hours, "+str(self.minutes)+" minutes, and "+str(self.seconds)+" seconds.")
 
     def tickUp(self):
-        #when called, waits one second, then ticks the seconds up by one#
+        # when called, waits one second, then ticks the seconds up by one #
         while True:
             time.sleep(1)
             self.seconds += 1
@@ -49,16 +49,13 @@ class Clock:
         return self.seconds
 
     def getTime(self):
-        #returns time as a list#
+        # returns time as a list #
         time = [self.hours, self.minutes, self.seconds]
         return time
 
     def setLocalTime(self):
-        #sets clock timing to local time#
+        # sets clock timing to local time #
         localtime = datetime.datetime.now()
-        self.hours=localtime.hour
-        self.minutes=localtime.minute
-        self.seconds=localtime.second
-
-
-
+        self.hours = localtime.hour
+        self.minutes = localtime.minute
+        self.seconds = localtime.second
