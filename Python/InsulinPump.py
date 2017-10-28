@@ -219,8 +219,10 @@ def alarm():
 
 def main():
     # Main Function
-
     Clock()
+
+
+
     # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
     # cumulative dose of insulin delivered is reset to 0.
 

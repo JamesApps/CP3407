@@ -2,7 +2,7 @@ import datetime
 import time
 
 
-class Clock:
+class Clock(object):
 
     def __init__(self, hour, minute, second):
         # initialisation using set time #
@@ -23,7 +23,7 @@ class Clock:
         self.seconds = second
 
     def printTime(self):
-        print("Current time is {:02}:{:02}:{:02}" .format(self.hours, self.minutes, self.seconds))
+        print("{:02}:{:02}:{:02}" .format(self.hours, self.minutes, self.seconds))
 
     def tickUp(self):
         # when called, waits one second, then ticks the seconds up by one #
