@@ -1,9 +1,18 @@
 # CP3407 Insulin Pump Python BackEnd
 
-# Python Imports
 import os.path
 import sqlite3
 from sqlite3 import Error
+
+# Pump configuration parameters
+capacity = 100
+safemin = 6
+safemax = 14
+max_daily_dose = 25
+max_single_dose = 4
+minimum_dose = 1
+
+STATE = ""
 
 sqlite_file = 'insulin_pump.sqlite'  # name of the sqlite database file
 
@@ -83,6 +92,111 @@ def create_db():
             c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name6, cn=str(column), ct=field))
 
 
+def clock():
+    # Get clock input
+    clock = float
+
+    # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
+    # cumulative dose of insulin delivered is reset to 0.
+
+
+def state_run(insulin_available, cumulative_dose):
+    # The RUN schema defines the system state for normal operation. The software defined in
+    # the RUN schema should execute every 10 minutes.
+
+
+
+    if insulin_available < max_single_dose:
+        # Raise Error
+        print("Insufficient insulin")
+    elif cumulative_dose > max_daily_dose:
+        # Raise Error
+        print('Cumulative dose exceeds max daily dose')
+    else:
+        # SUGAR_LOW ∨ SUGAR_OK ∨ SUGAR_HIGH
+
+        # If the computed insulin dose is zero, don’t deliver any insulin
+        # CompDose = 0 ⇒ dose! = 0
+
+        # // The maximum daily dose would be exceeded if the computed dose was delivered
+        # CompDose + cumulative_dose > max_daily_dose ⇒ alarm! = on
+        # ∧ status’ = warning ∧ dose! = max_daily_dose – cumulative_dose
+
+
+        # // The normal situation. If maximum single dose is not exceeded then deliver computed
+        # dose
+        # CompDose + cumulative_dose < max_daily_dose ⇒
+        # (CompDose ≤ max_single_dose ⇒ dose! = CompDose
+
+        # // The single dose computed is too high. Restrict the dose delivered to the maximum single
+        # dose
+        # CompDose > max_single_dose ⇒ dose! = max_single_dose
+        #  )
+        # insulin_available’ = insulin_available – dose!
+        # cumulative_dose’ = cumulative_dose + dose!
+        # insulin_available ≤ max_single_dose * 4 ⇒ status’ = warning ∧ display1! =
+        # display1! ∪ “Insulin low”
+        # r1’ = r2
+        # r0’ = r1
+
+def state_manual():
+    # The MANUAL schema models the system behaviour when it is in manual override mode.
+    # Notice that cumulative_dose is still updated but that no safety checks are applied until the
+    # system is reset to automatic mode.
+
+    # switch? = manual
+    # display1! = “Manual override”
+    # dose! = ManualDeliveryButton?
+    # cumulative_dose’ = cumulative_dose + dose!
+    # insulin_available’ = insulin_available – dose!
+
+def state_startup():
+    # The STARTUP schema models the behaviour of the system when the user switches on the
+    # device. It is assumed that the user’s blood sugar at that stage is OK. Note that
+    # cumulative_dose is NOT set in the startup sequence but can only be set to zero at midnight.
+    # This means that the total cumulative dose delivered can always be tracked by the system
+    # and is not affected by the user switching the machine on and off.
+
+    # switch? = off ∧ switch?’ = auto
+    # dose! = 0
+    # r0’ = safemin
+    # r1’ = safemax
+    # TEST
+
+
+def state_reset():
+    # The RESET schema models the system when the user changes the insulin reservoir. Notice
+    # that this does not require the device to be switched off. The design of the reservoir is such
+    # that it is not possible to insert reservoirs that are partially full.
+
+    # InsulinReservoir? = notpresent and InsulinReservoir?’ = present
+    # insulin_available’ = capacity
+    # insulinlevel’ = OK
+    # TEST
+
+def state_test():
+    # The TEST schema models the behaviour of the hardware self-test unit which runs a test on
+    # the system hardware every 30 seconds.
+
+    # (HardwareTest? = OK ∧ Needle? = present ∧ InsulinReservoir? = present ⇒
+    # status’ = running ∧ alarm! = off ∧ display1!= “” )
+    #
+    # ∨ (
+    # status’ = error
+    # alarm! = on
+    # (
+    #     Needle? = notpresent ⇒ display1! = display1! ∪ “No needle unit” ∨
+    #     ( InsulinReservoir? = notpresent ∨ insulin_available < max_single_dose)
+    #     ⇒ display1! = display1! ∪ “No insulin” ∨
+    #
+    #     HardwareTest? = batterylow ⇒ display1! = display1! ∪ ”Battery low” ∨
+    #     HardwareTest? = pumpfail ⇒ display1! = display1! ∪ ”Pump failure” ∨
+    #     HardwareTest? = sensorfail ⇒ display1! = display1! ∪ ”Sensor failure” ∨
+    #     HardwareTest? = deliveryfail ⇒ display1! = display1! ∪ ”Needle failure” ∨
+    #     )
+    # )
+
+
 def alarm():
     # Alarm Functions
     # Battery low - The voltage of the battery has fallen to less than 0.5V
@@ -108,72 +222,6 @@ def alarm():
     low_insulin = False
 
 
-# Pump Control - inject insulin
-
-
-def clock():
-    # Get clock input
-    clock = float
-
-    # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
-    # cumulative dose of insulin delivered is reset to 0.
-
-
-
-
-# Sensors - Temp, Pressure, Blood Glucose level
-
-# A blood sugar sensor, which measures the current blood sugar reading in
-# micrograms/millilitre. This is updated every 10 minutes. The value of Reading? is normally between 1 and 35.
-# r0, r1, and r2 maintain information about the last three readings from the sugar
-# sensor. r2 holds the current reading, r1 the previous reading and r0 the reading
-# before that. These are used to compute the rate of change of blood sugar readings
-
-# capacity represents the capacity of the system’s insulin reservoir and
-# insulin_available represents the amount of insulin in the reservoir that is currently
-# available for delivery.
-
-# A hardware test unit, which runs a self-test on the hardware every 30 seconds.
-# Power Management
-
-
-
-def insulin_pump_state():
-    # switch?: (off, manual, auto)
-    # ManualDeliveryButton?: N
-    # Reading?: N
-    # HardwareTest?: (OK, batterylow, pumpfail, sensorfail, deliveryfail)
-    # InsulinReservoir?: (present, notpresent)
-    # Needle?: (present, notpresent)
-    # clock?: TIME
-    #
-    # # Output device definition
-    # alarm! = (on, off)
-    # display1!, P string
-    # display2!: string
-    # clock!: TIME
-    # dose!: N
-    #
-    # # State variables used for dose computation
-    # status: (running, warning, error)
-    # r0, r1, r2: N
-    # capacity, insulin_available : N
-    # max_daily_dose, max_single_dose, minimum_dose: N
-    # safemin, safemax: N
-    # CompDose, cumulative_dose: N
-
-
-
-
-# Pump configuration parameters
-capacity = 100
-safemin = 6
-safemax = 14
-max_daily_dose = 25
-max_single_dose = 4
-minimum_dose = 1
-
-
 def main():
     # Main Function
 
@@ -188,13 +236,20 @@ def main():
         print("Logging Loop Started")
 
         # Check Pump State
-        # Insulin Pump States:
-        # Startup
-        # Run
-        # Manual
-        # Test
-        # Reset
+        while STATE == "Startup":
+            print("startup")
 
+        while STATE == "Run":
+            print("Run")
+
+        while STATE == "Manual":
+            print("Manual")
+
+        while STATE == "Test":
+            print("Test")
+
+        while STATE == "Reset":
+            print("Reset")
 
 
 if __name__ == '__main__':
