@@ -25,26 +25,21 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_history:
                     selectedFragment = HistoryFragment.newInstance();
-                    //mTextMessage.setText(R.string.title_history);
                     break;
                 case R.id.navigation_driprate:
                     selectedFragment = DripFragment.newInstance();
-                    //mTextMessage.setText(R.string.title_driprate);
                     break;
                 case R.id.navigation_settings:
                     selectedFragment = SettingsFragment.newInstance();
-                    //mTextMessage.setText(R.string.title_settings);
                     break;
                 case R.id.navigation_insulin:
                     selectedFragment = InsulinFragment.newInstance();
-                    //mTextMessage.setText(R.string.title_insulin);
                     break;
             }
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.content, selectedFragment);
             transaction.commit();
             return true;
-            //return false;
         }
 
 

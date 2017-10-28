@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android Studio.iml" filepath="$PROJECT_DIR$/Android Studio.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Android Studio.iml" filepath="$PROJECT_DIR$/Android Studio.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/CP3407.iml" filepath="$PROJECT_DIR$/.idea/CP3407.iml" />
       <module fileurl="file://$PROJECT_DIR$/InsulinPump.iml" filepath="$PROJECT_DIR$/InsulinPump.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

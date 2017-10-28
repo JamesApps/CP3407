@@ -1,14 +1,46 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:weightSum="1"
     tools:context="com.example.junpeng.insulinpump.DripFragment">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drip"
+        android:textSize="30sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Drip"
-        android:textSize="30sp"/>
+        android:text="Basic drip quantity per day"
+        android:textSize="30sp"
+        android:layout_marginTop="23dp" />
 
-</RelativeLayout>
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DripQuantityBar"
+        android:layout_gravity="left|bottom"
+        android:layout_marginTop="23dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Basic drip frequency per day"
+        android:textSize="30sp"
+        android:id="@+id/textView3"
+        android:layout_marginTop="23dp" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DripFrequencyBar"
+        android:layout_gravity="left|bottom"
+        android:layout_marginTop="23dp" />
+
+</LinearLayout>
