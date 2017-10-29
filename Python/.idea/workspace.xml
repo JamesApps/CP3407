@@ -4,10 +4,7 @@
     <list default="true" id="c0435ddb-6d05-49a3-ac3e-88ac6614b88d" name="Default" comment="Insulin Reservoir/Needle Assembly">
       <change type="DELETED" beforePath="$PROJECT_DIR$/insulin_pump.sqlite" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BloodGlucose.py" afterPath="$PROJECT_DIR$/BloodGlucose.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clock.py" afterPath="$PROJECT_DIR$/Clock.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/InsulinPump.py" afterPath="$PROJECT_DIR$/InsulinPump.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/InsulinReservoir.py" afterPath="$PROJECT_DIR$/InsulinReservoir.py" />
     </list>
     <ignored path="CP3407.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,30 +30,16 @@
       <file leaf-file-name="InsulinPump.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/InsulinPump.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state relative-caret-position="-113">
+              <caret line="182" column="9" lean-forward="true" selection-start-line="182" selection-start-column="9" selection-end-line="182" selection-end-column="9" />
               <folding>
                 <element signature="e#38#52#0" expanded="true" />
                 <element signature="e#977#6267#0" expanded="false" />
-                <element signature="e#11784#12198#0" expanded="false" />
-                <element signature="e#12292#12879#0" expanded="false" />
-                <element signature="e#12907#14046#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="156" column="16" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="414" selection-end-column="0" />
-              <folding>
-                <element signature="e#38#52#0" expanded="true" />
-                <element signature="e#977#6267#0" expanded="false" />
-                <element signature="e#11784#12198#0" expanded="false" />
-                <element signature="e#12292#12879#0" expanded="false" />
-                <element signature="e#12907#14046#0" expanded="false" />
+                <element signature="e#8674#10375#0" expanded="false" />
+                <element signature="e#10436#10752#0" expanded="false" />
+                <element signature="e#11815#12229#0" expanded="false" />
+                <element signature="e#12323#12910#0" expanded="false" />
+                <element signature="e#12938#14077#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,7 +78,7 @@
       <file leaf-file-name="BloodGlucose.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BloodGlucose.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-140">
+            <state relative-caret-position="378">
               <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
               <folding />
             </state>
@@ -238,7 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.InsulinPump">
     <configuration name="Clock" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -253,6 +236,24 @@
       <module name="CP3407" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Clock.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="InsulinPump" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CP3407" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/InsulinPump.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -499,16 +500,18 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in InsulinPump" />
       <item index="1" class="java.lang.String" itemvalue="Python.Clock" />
       <item index="2" class="java.lang.String" itemvalue="Python.test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.InsulinPump" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in InsulinPump" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Clock" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.InsulinPump" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in InsulinPump" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Clock" />
       </list>
     </recent_temporary>
   </component>
@@ -638,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509282500089</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Insulin Reservoir/Needle Assembly">
+      <created>1509302978386</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1509302978386</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -665,7 +675,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5033948" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29605263" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5219298" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10104167" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -711,9 +721,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -759,9 +771,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -773,9 +787,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -787,9 +803,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -868,9 +886,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -882,9 +902,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -916,9 +938,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -930,9 +954,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -944,9 +970,11 @@
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -984,26 +1012,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BloodGlucose.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/InsulinReservoir.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/insulin_pump.sqlite">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1032,16 +1044,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/insulin_pump.sqlite">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-262">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BloodGlucose.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/InsulinPump.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state relative-caret-position="-113">
+          <caret line="182" column="9" lean-forward="true" selection-start-line="182" selection-start-column="9" selection-end-line="182" selection-end-column="9" />
           <folding>
             <element signature="e#38#52#0" expanded="true" />
             <element signature="e#977#6267#0" expanded="false" />
-            <element signature="e#11784#12198#0" expanded="false" />
-            <element signature="e#12292#12879#0" expanded="false" />
-            <element signature="e#12907#14046#0" expanded="false" />
+            <element signature="e#8674#10375#0" expanded="false" />
+            <element signature="e#10436#10752#0" expanded="false" />
+            <element signature="e#11815#12229#0" expanded="false" />
+            <element signature="e#12323#12910#0" expanded="false" />
+            <element signature="e#12938#14077#0" expanded="false" />
           </folding>
         </state>
       </provider>

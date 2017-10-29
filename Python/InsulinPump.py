@@ -170,10 +170,9 @@ def update_db(remaining_insulin, cumulative_dose, blood_glucose_level):
         conn.commit()
         conn.close()
 
-def state_run(reservoir, r0, r1):
+def state_run(reservoir, r0, r1, r2):
     # The RUN schema defines the system state for normal operation. The software defined in
     # the RUN schema should execute every 10 minutes.
-    r2 = bg_sensor.getBG()
 
     if reservoir.insulinAvailable < max_single_dose:
         # Raise Error
@@ -215,7 +214,7 @@ def state_run(reservoir, r0, r1):
 
     r0 = r1
     r1 = r2
-    return r0, r1
+    return reservoir.insulinAvailable, reservoir.cumulativeDose, r0, r1
 
 
 def get_compdose(r0, r1, r2):
@@ -395,10 +394,13 @@ def main():
             state_test(reservoir.needleStatus, reservoir.reservoirStatus, reservoir.insulinAvailable,
                        battery.batteryLevel, reservoir.pumpStatus, bg_sensor.sensorStatus, reservoir.deliveryStatus)
             if clock.minutes % 1 == 0:
+                #timer is set to test now, remember to change it to % 10 to complete
+                r2 = bg_sensor.getBG()
+                r2 += 1
+                print(r2)
                 print('timer works')
-                update_db(reservoir.insulinAvailable, reservoir.cumulativeDose, bg_sensor.getBG())
-                state_run(reservoir, r0, r1)
-
+                reservoir.insulinAvailable, reservoir.cumulativeDose, r0, r1 = state_run(reservoir, r0, r1, r2)
+                update_db(reservoir.insulinAvailable, reservoir.cumulativeDose, r2)
 
 
             print("Run")
