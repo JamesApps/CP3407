@@ -33,7 +33,7 @@ def get_db(table_name, column_name):
     except Error as e:
         print(e)
     else:
-        c.execute('SELECT * FROM '+table_name+' WHERE '+column_name)
+        c.execute('SELECT ' + column_name + ' FROM ' + table_name)
         data = c.fetchone()
         return data
     conn.close()
@@ -345,7 +345,7 @@ def main():
 
     # Test get from data function
     data = get_db('Insulin', 'max_daily_dose')
-    print(data)
+    print(data[0])
 
 
 
