@@ -8,15 +8,15 @@ class BloodGlucose:
     # setSafeLevels(x,y) can change the set safety levels #
 
     def __init__(self):
-        self.bg = 20.0
-        self.safeLevels = [1, 35]
+        self.bg = 10.0
+        self.safeLevels = [6.0, 14.0]
         self.alert = False
-        self.bgFluctuation = 2.0
+        self.bgFluctuation = 1.0
 
 # runs the update on the blood glucose using the
     def getBG(self):
         self.bg = self.bg + self.randomGenerator(-self.bgFluctuation, self.bgFluctuation)
-        if self.bg < 1 or self.bg > 35:
+        if self.bg < self.safeLevels[0] or self.bg > self.safeLevels[1]:
             self.alert = True
         else:
             self.alert = False
