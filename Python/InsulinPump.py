@@ -93,7 +93,7 @@ def create_db():
             c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name6, cn=str(column), ct=field))
 
 
-def state_run(insulin_available, cumulative_dose):
+def state_run(insulin_available, cumulative_dose, r0, r1, r2):
     # The RUN schema defines the system state for normal operation. The software defined in
     # the RUN schema should execute every 10 minutes.
 
@@ -106,15 +106,13 @@ def state_run(insulin_available, cumulative_dose):
     else:
         # Get sugar level from database
 
-        print("sugar level")
 
         # Get Comp Dose
-        compdose = get_compdose()
+        compdose = get_compdose(r0, r1, r2)
 
         # If the computed insulin dose is zero, don’t deliver any insulin
         if compdose == 0:
-            # Do nothing
-            pass
+            dose = 0
 
         # The maximum daily dose would be exceeded if the computed dose was delivered
         elif (compdose + cumulative_dose) > max_daily_dose:
@@ -129,12 +127,16 @@ def state_run(insulin_available, cumulative_dose):
         elif compdose > max_single_dose:
             dose = max_single_dose
 
-        insulin_available += dose
+        insulin_available -= dose
         cumulative_dose += dose
 
         if insulin_available <= max_single_dose * 4:
             print("Low insulin")
             # alarm
+
+    r0 = r1
+    r1 = r2
+    return r0, r1
 
 
 def get_compdose(r0, r1, r2):
@@ -188,31 +190,25 @@ def get_compdose(r0, r1, r2):
     return compdose
 
 
-def state_manual():
-    print("Manual")
+def state_manual(insulin_available, cumulative_dose):
     # The MANUAL schema models the system behaviour when it is in manual override mode.
     # Notice that cumulative_dose is still updated but that no safety checks are applied until the
     # system is reset to automatic mode.
 
-    # switch? = manual
-    # display1! = “Manual override”
-    # dose! = ManualDeliveryButton?
-    # cumulative_dose’ = cumulative_dose + dose!
-    # insulin_available’ = insulin_available – dose!
+    dose = ManualDeliveryButton
+    insulin_available -= dose
+    cumulative_dose += dose
 
 
 def state_startup():
-    print("Startup")
     # The STARTUP schema models the behaviour of the system when the user switches on the
     # device. It is assumed that the user’s blood sugar at that stage is OK. Note that
     # cumulative_dose is NOT set in the startup sequence but can only be set to zero at midnight.
     # This means that the total cumulative dose delivered can always be tracked by the system
     # and is not affected by the user switching the machine on and off.
-
-    # switch? = off ∧ switch?’ = auto
-    # dose! = 0
-    # r0’ = safemin
-    # r1’ = safemax
+    dose = 0
+    r0 = safemin
+    r1 = safemax
     # TEST
 
 
@@ -226,6 +222,7 @@ def state_reset():
     # insulin_available’ = capacity
     # insulinlevel’ = OK
     # TEST
+
 
 def state_test():
     # The TEST schema models the behaviour of the hardware self-test unit which runs a test on
@@ -270,7 +267,6 @@ def alarm(function):
     if function == "delivery_failure":
         print("delivery_failure")
 
-
     # Needle assembly removed - The user has removed the needle assembly
     if function == "needle_removed":
         print("needle_removed")
@@ -286,10 +282,10 @@ def alarm(function):
 
 def main():
     # Main Function
+
     clock = Clock.Clock()
     hours = clock.hours
     print(hours)
-
     # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
     # cumulative dose of insulin delivered is reset to 0.
 
@@ -298,6 +294,8 @@ def main():
         pass
     else:
         create_db()
+
+    state_startup()
 
     # Logging Loop
     while True:
