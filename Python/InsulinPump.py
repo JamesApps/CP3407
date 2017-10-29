@@ -25,11 +25,8 @@ clock = Clock.Clock()
 clock_time = clock.getTime()
 battery = Battery.Battery()
 
-
-
-
 # Default Run state on start
-STATE = ""
+STATE = "Run"
 
 sqlite_file = 'insulin_pump.sqlite'  # name of the sqlite database file
 
@@ -274,7 +271,8 @@ def state_manual(insulin_available, cumulative_dose):
     # Notice that cumulative_dose is still updated but that no safety checks are applied until the
     # system is reset to automatic mode.
 
-    dose = ManualDeliveryButton()
+    # One does for each button press
+    dose = 1
     insulin_available -= dose
     cumulative_dose += dose
 
@@ -372,7 +370,8 @@ def alarm(function):
 
 def main():
     # Main Function
-
+    # Calls Start Up function to initiate the insulin pump, then moves to the logging loop, which is 'Run' State
+    # The loop State change to either manual injection, or
 
     # Start Up Function
     dose, r0, r1, reservoir = state_startup()
@@ -381,14 +380,14 @@ def main():
     # Test get from data function
     data = get_db('Information_Log', 'remaining_insulin')
     print(data)
-    STATE = "Run"
+
     # Logging Loop
     while True:
         # Check Pump State
         while STATE == "Run":
             print(str(clock.getTime()))
             print(reservoir.insulinAvailable, reservoir.cumulativeDose, r0, r1)
-            print ('run now')
+            print('run now')
             #30 sec hardware test
             time.sleep(5)
             state_test(reservoir.needleStatus, reservoir.reservoirStatus, reservoir.insulinAvailable,
