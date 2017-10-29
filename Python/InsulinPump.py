@@ -4,6 +4,8 @@ import os.path
 import sqlite3
 from sqlite3 import Error
 import Clock
+import InsulinReservoir
+import BloodGlucose
 
 # Initial/default Pump configuration parameters to store in db
 first_name = 'Joe'
@@ -17,6 +19,10 @@ max_daily_dose = 25
 max_single_dose = 4
 minimum_dose = 1
 cumulative_dose = 0
+bg_sensor= BloodGlucose.BloodGlucose()
+
+
+
 
 STATE = ""
 
