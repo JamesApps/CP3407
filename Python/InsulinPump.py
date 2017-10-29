@@ -28,6 +28,20 @@ STATE = ""
 
 sqlite_file = 'insulin_pump.sqlite'  # name of the sqlite database file
 
+def get_db(table_name, column_name):
+    try:
+        conn = sqlite3.connect(sqlite_file)
+        c = conn.cursor()
+    except Error as e:
+        print(e)
+    else:
+        c.execute('SELECT * FROM '+table_name+' WHERE '+column_name )
+        data = c.fetchone()
+        return data
+        conn.close()
+
+
+
 
 def create_db():
     # Create database if not already created
@@ -126,9 +140,11 @@ def create_db():
     conn.commit()
 
 
-def state_run(insulin_available, cumulative_dose, r0, r1, r2):
+def state_run(insulin_available, cumulative_dose, r0, r1):
     # The RUN schema defines the system state for normal operation. The software defined in
     # the RUN schema should execute every 10 minutes.
+
+
 
     if insulin_available < max_single_dose:
         # Raise Error
@@ -138,7 +154,7 @@ def state_run(insulin_available, cumulative_dose, r0, r1, r2):
         print('Cumulative dose exceeds max daily dose')
     else:
         # Get sugar level from database
-
+        r2 = bg_sensor.getBG()
 
         # Get Comp Dose
         compdose = get_compdose(r0, r1, r2)
@@ -239,9 +255,13 @@ def state_startup():
     # cumulative_dose is NOT set in the startup sequence but can only be set to zero at midnight.
     # This means that the total cumulative dose delivered can always be tracked by the system
     # and is not affected by the user switching the machine on and off.
+    if os.path.isfile(sqlite_file):
+        pass
+    else:
+        create_db()
+        r0 = safe_min
+        r1 = safe_max
     dose = 0
-    r0 = safe_min
-    r1 = safe_max
     # TEST
     return dose, r0, r1
 
