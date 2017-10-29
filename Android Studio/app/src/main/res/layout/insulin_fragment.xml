@@ -8,7 +8,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insulin Remain"
         android:layout_marginTop="18dp"
         android:textSize="40dp"
         android:textStyle="bold"
@@ -29,7 +28,6 @@
         android:id="@+id/textViewInsulinRemain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="50%"
         android:textAllCaps="false"
         android:textAppearance="@android:style/TextAppearance.Widget.TextView"
         android:textColorHighlight="@android:color/background_dark"

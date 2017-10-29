@@ -11,15 +11,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textSize="40dp"
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Brightness"
         android:textSize="30sp"
         android:layout_marginTop="25dp"
         />
@@ -34,11 +33,10 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sound"
         android:textSize="30sp"
-        android:id="@+id/textView3"
         android:layout_marginTop="23dp" />
 
     <SeekBar
@@ -51,11 +49,10 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Font Size"
         android:textSize="30sp"
-        android:id="@+id/textView4"
         android:layout_marginTop="23dp" />
 
     <SeekBar
@@ -71,7 +68,6 @@
         android:id="@+id/Set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-        android:text="Set"
+        android:layout_marginTop="10dp"
         android:textSize="30dp" />
 </LinearLayout>
