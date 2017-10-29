@@ -11,11 +11,16 @@ class InsulinReservoir:
         self.cumulativeDose = 0.0
         self.needleStatus = True
         self.reservoirStatus = True
+        self.pumpStatus = True
+        self.deliveryStatus = True
 
-    def __init(self, insulin, cumulative):
+    def __init__(self, insulin, cumulative):
         self.insulinAvailable = insulin
         self.cumulativeDose = cumulative
         self.needleStatus = True
+        self.reservoirStatus = True
+        self.pumpStatus = True
+        self.deliveryStatus = True
 
     def insertNeedle(self):
         self.needleStatus = True

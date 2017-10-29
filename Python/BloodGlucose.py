@@ -12,6 +12,7 @@ class BloodGlucose:
         self.safeLevels = [6.0, 14.0]
         self.alert = False
         self.bgFluctuation = 1.0
+        self.sensorStatus = True
 
 # runs the update on the blood glucose using the
     def getBG(self):
