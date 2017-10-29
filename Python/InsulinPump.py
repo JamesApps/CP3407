@@ -7,7 +7,8 @@ import Clock
 
 # Initial/default Pump configuration parameters to store in db
 first_name = 'Joe'
-last_name = 'Do'
+last_name = 'Doe'
+
 capacity_insulin = 100
 drip_rate = 1
 safe_min = 6
@@ -16,7 +17,6 @@ max_daily_dose = 25
 max_single_dose = 4
 minimum_dose = 1
 cumulative_dose = 0
-
 
 STATE = ""
 
@@ -28,17 +28,17 @@ def create_db():
 
     # Tables
     table_name1 = 'Patient'  # name of the table to be created
-    table_1_column = ['patient_id', 'first_name', 'last_name']  # name of columns
-    table_1_column_field_type = ['INTEGER', 'STRING', 'STRING']  # column data types
+    table_1_column = ['first_name', 'last_name']  # name of columns
+    table_1_column_field_type = ['STRING', 'STRING']  # column data types
 
     table_name2 = 'Insulin'  # name of the table to be created
-    table_2_column = ['insulin_id', 'drip_rate', 'max_daily_dose', 'capacity_insulin', 'safe_min', 'safe_max',
+    table_2_column = ['drip_rate', 'max_daily_dose', 'capacity_insulin', 'safe_min', 'safe_max',
                       'minimum_dose', 'max_single_dose']  # name of columns
-    table_2_column_field_type = ['INTEGER', 'INTEGER', 'INTEGER', 'INTEGER', 'INTEGER', 'INTEGER',
+    table_2_column_field_type = ['INTEGER', 'INTEGER', 'INTEGER', 'INTEGER', 'INTEGER',
                                  'INTEGER', 'INTEGER']  # column data types
 
     table_name3 = 'Battery'  # name of the table to be created
-    table_3_column = ['battery_id', 'battery_power_level']  # name of columns
+    table_3_column = ['battery_power_level']  # name of columns
     table_3_column_field_type = ['INTEGER', 'INTEGER']  # column data types
 
     table_name4 = 'Clock'  # name of the table to be created
@@ -46,13 +46,13 @@ def create_db():
     table_4_column_field_type = ['INTEGER', 'TIME']  # column data types
 
     table_name5 = 'Blood_Glucose'  # name of the table to be created
-    table_5_column = ['blood_glucose_id', 'blood_glucose_level']  # name of columns
+    table_5_column = ['blood_glucose_level']  # name of columns
     table_5_column_field_type = ['INTEGER', 'INTEGER']  # column data types
 
     table_name6 = 'Information_Log'  # name of the table to be created
-    table_6_column = ['information_log_id', 'clock_time', 'battery_power_level', 'remaining_insulin',
+    table_6_column = ['clock_time', 'battery_power_level', 'remaining_insulin',
                       'cumulative_dose', 'blood_glucose_level']  # name of columns
-    table_6_column_field_type = ['INTEGER', 'TIME', 'INTEGER', 'INTEGER', 'INTEGER', 'INTEGER']  # column data types
+    table_6_column_field_type = ['TIME', 'INTEGER', 'INTEGER', 'INTEGER', 'INTEGER']  # column data types
 
     try:
         # Connecting to the database file
@@ -98,7 +98,26 @@ def create_db():
         for column, field in zip(table_6_column[1:], table_6_column_field_type[1:]):
             c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name6, cn=str(column), ct=field))
 
-            # Initialise single value table entries
+    # Enter Default settings
+    # Patient
+    table_name = 'Patient'
+    column_string = 'first_name, last_name'
+    data_list = first_name, last_name
+    command = 'INSERT INTO ' + table_name + '(' + column_string + ') VALUES (?, ?)'
+    conn = sqlite3.connect(sqlite_file)
+    c = conn.cursor()
+    c.execute(command, data_list)
+    conn.commit()
+
+    # Insulin
+    table_name = 'Insulin'
+    column_string = 'drip_rate, max_daily_dose, capacity_insulin, safe_min, safe_max, minimum_dose, max_single_dose'
+    data_list = drip_rate, max_daily_dose, capacity_insulin, safe_min, safe_max, minimum_dose, max_single_dose
+    command = 'INSERT INTO ' + table_name + '(' + column_string + ') VALUES (?, ?, ?, ?, ?, ?, ?)'
+    conn = sqlite3.connect(sqlite_file)
+    c = conn.cursor()
+    c.execute(command, data_list)
+    conn.commit()
 
 
 def state_run(insulin_available, cumulative_dose, r0, r1, r2):
@@ -299,14 +318,13 @@ def main():
     if clock.hours == 0 and clock.minutes == 0 and clock.seconds == 0:
         cumulative_dose = 0
 
-    # SQLite Database
+    # Create SQLite Database on first operation, with default settings
     if os.path.isfile(sqlite_file):
         pass
     else:
         create_db()
 
-    # Set Up
-
+    # Start Up Function
     dose, r0, r1 = state_startup()
     print(dose, r0, r1)
 
