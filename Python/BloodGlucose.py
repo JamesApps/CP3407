@@ -27,6 +27,7 @@ class BloodGlucose:
         self.safeLevels[0] = safemin
         self.safeLevels[1] = safemax
 
+    # sets the fluctuation levels for the glucose, defaults to 2.0
     def setBGFluctuations(self, value):
         self.bgFluctuation = value
 
