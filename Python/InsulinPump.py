@@ -16,7 +16,6 @@ safe_max = 14
 max_daily_dose = 25
 max_single_dose = 4
 minimum_dose = 1
-cumulative_dose = 0
 
 STATE = ""
 
