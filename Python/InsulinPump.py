@@ -246,7 +246,7 @@ def state_reset(reservoir):
     # that it is not possible to insert reservoirs that are partially full.
 
     if reservoir:
-        insulin_available = capacity
+        insulin_available = capacity_insulin
     else:
         alarm("reservoir_removed")
 

@@ -11,29 +11,32 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="30sp" />
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textSize="40dp"
+        android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Brightness"
         android:textSize="30sp"
-        android:layout_marginTop="23dp" />
+        android:layout_marginTop="25dp"
+        />
 
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/BrightnessBar"
         android:layout_gravity="left|bottom"
-        android:layout_marginTop="23dp" />
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sound"
         android:textSize="30sp"
-        android:id="@+id/textView3"
         android:layout_marginTop="23dp" />
 
     <SeekBar
@@ -41,14 +44,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/SoundBar"
         android:layout_gravity="left|bottom"
-        android:layout_marginTop="23dp" />
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Font Size"
         android:textSize="30sp"
-        android:id="@+id/textView4"
         android:layout_marginTop="23dp" />
 
     <SeekBar
@@ -56,6 +60,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/FontBar"
         android:layout_gravity="left|bottom"
-        android:layout_marginTop="23dp" />
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
+    <Button
+        android:id="@+id/Set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp" />
 </LinearLayout>

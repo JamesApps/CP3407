@@ -10,6 +10,7 @@ class InsulinReservoir:
         self.insulinAvailable = 100.0
         self.cumulativeDose = 0.0
         self.needle = True
+        self.reservoir = True
 
     def __init(self, insulin, cumulative):
         self.insulinAvailable = insulin
@@ -32,7 +33,7 @@ class InsulinReservoir:
         return self.cumulativeDose
 
     def deliverDose(self, dose):
-        if self.needle == False:
+        if self.needle == False or self.reservoir == False:
             return
         if dose > self.insulinAvailable:
             dose = self.insulinAvailable
