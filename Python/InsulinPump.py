@@ -18,15 +18,13 @@ safe_max = 14
 max_daily_dose = 25
 max_single_dose = 4
 minimum_dose = 1
-cumulative_dose = 0
-bg_sensor= BloodGlucose.BloodGlucose()
+bg_sensor = BloodGlucose.BloodGlucose()
 
-
-
-
+# Default Run state on start
 STATE = ""
 
 sqlite_file = 'insulin_pump.sqlite'  # name of the sqlite database file
+
 
 def get_db(table_name, column_name):
     try:
@@ -35,12 +33,10 @@ def get_db(table_name, column_name):
     except Error as e:
         print(e)
     else:
-        c.execute('SELECT * FROM '+table_name+' WHERE '+column_name )
+        c.execute('SELECT * FROM '+table_name+' WHERE '+column_name)
         data = c.fetchone()
         return data
-        conn.close()
-
-
+    conn.close()
 
 
 def create_db():
@@ -143,8 +139,6 @@ def create_db():
 def state_run(insulin_available, cumulative_dose, r0, r1):
     # The RUN schema defines the system state for normal operation. The software defined in
     # the RUN schema should execute every 10 minutes.
-
-
 
     if insulin_available < max_single_dose:
         # Raise Error
@@ -259,8 +253,8 @@ def state_startup():
         pass
     else:
         create_db()
-        r0 = safe_min
-        r1 = safe_max
+    r0 = safe_min
+    r1 = safe_max
     dose = 0
     # TEST
     return dose, r0, r1
@@ -344,15 +338,16 @@ def main():
     if clock.hours == 0 and clock.minutes == 0 and clock.seconds == 0:
         cumulative_dose = 0
 
-    # Create SQLite Database on first operation, with default settings
-    if os.path.isfile(sqlite_file):
-        pass
-    else:
-        create_db()
 
     # Start Up Function
     dose, r0, r1 = state_startup()
     print(dose, r0, r1)
+
+    # Test get from data function
+    data = get_db('Insulin', 'max_daily_dose')
+    print(data)
+
+
 
     # Logging Loop
     while True:
