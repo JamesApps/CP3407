@@ -41,12 +41,12 @@ def create_db():
 
     table_name5 = 'Blood_Glucose'  # name of the table to be created
     table_5_column = ['blood_glucose_id', 'blood_glucose_level']  # name of columns
-    table_5_column_field_type = ['INTEGER', 'INT']  # column data types
+    table_5_column_field_type = ['INTEGER', 'INTEGER']  # column data types
 
     table_name6 = 'Information_Log'  # name of the table to be created
     table_6_column = ['information_log_id', 'clock_time', 'battery_power_level', 'remaining_insulin',
                       'blood_glucose_level']  # name of columns
-    table_6_column_field_type = ['INTEGER', 'FLOAT', 'FLOAT', 'FLOAT', 'INT']  # column data types
+    table_6_column_field_type = ['INTEGER', 'FLOAT', 'FLOAT', 'FLOAT', 'INTEGER']  # column data types
 
     try:
         # Connecting to the database file
@@ -285,12 +285,13 @@ def alarm(function):
 
 def main():
     # Main Function
-
     clock = Clock.Clock()
-    hours = clock.hours
-    print(hours)
+
     # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
     # cumulative dose of insulin delivered is reset to 0.
+    if clock.hours == 0 and clock.minutes == 0 and clock.seconds == 0:
+        cumulative_dose = 0
+
 
     # SQLite Database
     if os.path.isfile(sqlite_file):
@@ -298,22 +299,18 @@ def main():
     else:
         create_db()
 
-    state_startup()
+    dose, r0, r1 = state_startup()
+    print(dose, r0, r1)
+
 
     # Logging Loop
     while True:
         # Check Pump State
-        while STATE == "Startup":
-            print("startup")
-
         while STATE == "Run":
             print("Run")
 
         while STATE == "Manual":
             print("Manual")
-
-        while STATE == "Test":
-            print("Test")
 
         while STATE == "Reset":
             print("Reset")
