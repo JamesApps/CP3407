@@ -41,12 +41,12 @@ def create_db():
 
     table_name5 = 'Blood_Glucose'  # name of the table to be created
     table_5_column = ['blood_glucose_id', 'blood_glucose_level']  # name of columns
-    table_5_column_field_type = ['INTEGER', 'FLOAT']  # column data types
+    table_5_column_field_type = ['INTEGER', 'INT']  # column data types
 
     table_name6 = 'Information_Log'  # name of the table to be created
     table_6_column = ['information_log_id', 'clock_time', 'battery_power_level', 'remaining_insulin',
                       'blood_glucose_level']  # name of columns
-    table_6_column_field_type = ['INTEGER', 'FLOAT', 'FLOAT', 'FLOAT', 'FLOAT']  # column data types
+    table_6_column_field_type = ['INTEGER', 'FLOAT', 'FLOAT', 'FLOAT', 'INT']  # column data types
 
     try:
         # Connecting to the database file
