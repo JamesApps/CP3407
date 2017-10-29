@@ -210,42 +210,45 @@ def state_startup():
     r0 = safemin
     r1 = safemax
     # TEST
+    return dose, r0, r1
 
 
-def state_reset():
-    print("Reset")
+def state_reset(reservoir):
     # The RESET schema models the system when the user changes the insulin reservoir. Notice
     # that this does not require the device to be switched off. The design of the reservoir is such
     # that it is not possible to insert reservoirs that are partially full.
 
-    # InsulinReservoir? = notpresent and InsulinReservoir?’ = present
-    # insulin_available’ = capacity
-    # insulinlevel’ = OK
+    if reservoir:
+        insulin_available = capacity
+    else:
+        alarm("reservoir_removed")
+
+    return insulin_available
     # TEST
 
 
-def state_test():
+def state_test(needle, reservoir, insulin_available, battery, pump, sensor, delivery):
     # The TEST schema models the behaviour of the hardware self-test unit which runs a test on
     # the system hardware every 30 seconds.
     print("Test")
 
-    # (HardwareTest? = OK ∧ Needle? = present ∧ InsulinReservoir? = present ⇒
-    # status’ = running ∧ alarm! = off ∧ display1!= “” )
-    #
-    # ∨ (
-    # status’ = error
-    # alarm! = on
-    # (
-    #     Needle? = notpresent ⇒ display1! = display1! ∪ “No needle unit” ∨
-    #     ( InsulinReservoir? = notpresent ∨ insulin_available < max_single_dose)
-    #     ⇒ display1! = display1! ∪ “No insulin” ∨
-    #
-    #     HardwareTest? = batterylow ⇒ display1! = display1! ∪ ”Battery low” ∨
-    #     HardwareTest? = pumpfail ⇒ display1! = display1! ∪ ”Pump failure” ∨
-    #     HardwareTest? = sensorfail ⇒ display1! = display1! ∪ ”Sensor failure” ∨
-    #     HardwareTest? = deliveryfail ⇒ display1! = display1! ∪ ”Needle failure” ∨
-    #     )
-    # )
+    if not needle:
+        alarm("needle_removed")
+    elif not reservoir:
+        alarm("reservoir_removed")
+    elif insulin_available < max_single_dose:
+        alarm("low_insulin")
+    elif battery < 0.5:
+        alarm("battery_low")
+    elif not pump:
+        alarm("pump_failure")
+    elif not sensor:
+        alarm("sensor_failure")
+    elif not delivery:
+        alarm("delivery_failure")
+    else:
+        print('Passed Test')
+
 
 
 def alarm(function):
