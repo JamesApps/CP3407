@@ -1,5 +1,6 @@
 package com.example.junpeng.insulinpump;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,9 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class DripFragment extends Fragment {
+
+    private SeekBar quantitySeekbar = null;
+    private SeekBar frequencySeekBar = null;
+
     public static DripFragment newInstance() {
         DripFragment fragment = new DripFragment();
         return fragment;
@@ -18,6 +24,9 @@ public class DripFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dripQuantityControl();
+        dripFrequencyControl();
     }
 
     @Override
@@ -43,4 +52,66 @@ public class DripFragment extends Fragment {
         setButton.setText("Set");
 
     }
+    private void dripQuantityControl()
+    {
+        try
+        {
+            SeekBar quantitySeekbar = (SeekBar) getView().findViewById(R.id.DripQuantityBar);
+
+
+            quantitySeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+            {
+                @Override
+                public void onStopTrackingTouch(SeekBar arg0)
+                {
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar arg0)
+                {
+                }
+
+                @Override
+                public void onProgressChanged(SeekBar arg0, int progress, boolean arg2)
+                {
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void dripFrequencyControl()
+    {
+        try
+        {
+            SeekBar quantitySeekbar = (SeekBar) getView().findViewById(R.id.DripFrequencyBar);
+
+
+            quantitySeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+            {
+                @Override
+                public void onStopTrackingTouch(SeekBar arg0)
+                {
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar arg0)
+                {
+                }
+
+                @Override
+                public void onProgressChanged(SeekBar arg0, int progress, boolean arg2)
+                {
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 }
