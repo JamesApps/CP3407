@@ -61,22 +61,10 @@ def create_db():
     table_2_column_field_type = ['REAL', 'REAL', 'REAL', 'REAL', 'REAL',
                                  'REAL', 'REAL']  # column data types
 
-    table_name3 = 'Battery'  # name of the table to be created
-    table_3_column = ['battery_power_level']  # name of columns
-    table_3_column_field_type = ['FLOAT']  # column data types
-
-    table_name4 = 'Clock'  # name of the table to be created
-    table_4_column = ['clock_id', 'clock_time']  # name of columns
-    table_4_column_field_type = ['INTEGER', 'TIME']  # column data types
-
-    table_name5 = 'Blood_Glucose'  # name of the table to be created
-    table_5_column = ['blood_glucose_id', 'blood_glucose_level']  # name of columns
-    table_5_column_field_type = ['INTEGER', 'REAL']  # column data types
-
-    table_name6 = 'Information_Log'  # name of the table to be created
-    table_6_column = ['clock_time', 'battery_power_level', 'remaining_insulin',
+    table_name3 = 'Information_Log'  # name of the table to be created
+    table_3_column = ['clock_time', 'battery_power_level', 'remaining_insulin',
                       'cumulative_dose', 'blood_glucose_level']  # name of columns
-    table_6_column_field_type = ['STRING', 'FLOAT', 'REAL', 'REAL', 'REAL']  # column data types
+    table_3_column_field_type = ['STRING', 'FLOAT', 'REAL', 'REAL', 'REAL']  # column data types
 
     try:
         # Connecting to the database file
@@ -103,24 +91,6 @@ def create_db():
                   .format(tn=table_name3, nf=table_3_column[0], ft=table_3_column_field_type[0]))
         for column, field in zip(table_3_column[1:], table_3_column_field_type[1:]):
             c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name3, cn=str(column), ct=field))
-
-        # Table 4
-        c.execute('CREATE TABLE {tn} ({nf} {ft})'
-                  .format(tn=table_name4, nf=table_4_column[0], ft=table_4_column_field_type[0]))
-        for column, field in zip(table_4_column[1:], table_4_column_field_type[1:]):
-            c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name4, cn=str(column), ct=field))
-
-        # Table 5
-        c.execute('CREATE TABLE {tn} ({nf} {ft})'
-                  .format(tn=table_name5, nf=table_5_column[0], ft=table_5_column_field_type[0]))
-        for column, field in zip(table_5_column[1:], table_5_column_field_type[1:]):
-            c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name5, cn=str(column), ct=field))
-
-        # Table 6
-        c.execute('CREATE TABLE {tn} ({nf} {ft})'
-                  .format(tn=table_name6, nf=table_6_column[0], ft=table_6_column_field_type[0]))
-        for column, field in zip(table_6_column[1:], table_6_column_field_type[1:]):
-            c.execute("ALTER TABLE {tn} ADD COLUMN '{cn}' {ct}".format(tn=table_name6, cn=str(column), ct=field))
 
     table_name = 'Patient'
     column_string = 'first_name, last_name'
