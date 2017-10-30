@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
         TextView textView2 = (TextView) getView().findViewById(R.id.textView5);
         textView2.setText("Pump:");
         TextView textView3 = (TextView) getView().findViewById(R.id.BGlevel);
-        textView3.setText("\\t\\t\\tmmol/l");
+        textView3.setText("\\t\\t\\tmmol/l"); //Blood Gluscose Level data reading goes here
 
         Button setButton = (Button) getView().findViewById(R.id.textManualInjection);
         setButton.setText("Manaual Injection");
