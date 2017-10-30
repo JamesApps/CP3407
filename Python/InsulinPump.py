@@ -382,11 +382,11 @@ def main():
                 reservoir.cumulativeDose = 0
 
             # EVENT FOR MANUAL MODE
-            # if event:
+            # if button press event:
             #     state = 'Manual'
 
             # EVENT FOR RESET MODE
-            # if event:
+            # if removed reservoir event:
             #     state = 'Reset'
 
         while state == "Manual":
