@@ -30,7 +30,7 @@ public class HistoryFragment extends Fragment {
         TextView textView = (TextView) getView().findViewById(R.id.textView);
         textView.setText("History");
         Button setButton = (Button) getView().findViewById(R.id.ShowGraph);
-        setButton.setText("Set");
+        setButton.setText("Show Graph");
 
     }
 }

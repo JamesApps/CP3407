@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content, HomeFragment.newInstance());
+        transaction.replace(R.id.content, Sign_in_Fragment.newInstance(String param1, String param2));//Sign Fragment starts here
         transaction.commit();
 
     }

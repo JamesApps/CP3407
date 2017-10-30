@@ -47,9 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textViewInsulinRemain"
+        android:layout_below="@+id/textViewInsuli"
         android:layout_marginStart="17dp"
-        android:text="Estimate using time:50Hours"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold" />
