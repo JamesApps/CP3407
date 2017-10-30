@@ -54,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content, Sign_in_Fragment.newInstance(String param1, String param2));//Sign Fragment starts here
+        transaction.replace(R.id.content, HomeFragment.newInstance());//Sign Fragment starts here
         transaction.commit();
 
     }
