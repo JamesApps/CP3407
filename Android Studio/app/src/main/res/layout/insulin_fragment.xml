@@ -8,7 +8,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="Insulin Remain"
+=======
+>>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:layout_marginTop="18dp"
         android:textSize="40dp"
         android:textStyle="bold"
@@ -29,7 +32,10 @@
         android:id="@+id/textViewInsulinRemain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="50%"
+=======
+>>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textAllCaps="false"
         android:textAppearance="@android:style/TextAppearance.Widget.TextView"
         android:textColorHighlight="@android:color/background_dark"

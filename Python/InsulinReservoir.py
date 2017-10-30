@@ -9,30 +9,39 @@ class InsulinReservoir:
     def __init__(self):
         self.insulinAvailable = 100.0
         self.cumulativeDose = 0.0
-        self.needle = True
+        self.needleStatus = True
+        self.reservoirStatus = True
+        self.pumpStatus = True
+        self.deliveryStatus = True
 
-    def __init(self, insulin, cumulative):
+    def __init__(self, insulin, cumulative):
         self.insulinAvailable = insulin
         self.cumulativeDose = cumulative
-        self.needle = True
+        self.needleStatus = True
+        self.reservoirStatus = True
+        self.pumpStatus = True
+        self.deliveryStatus = True
 
     def insertNeedle(self):
-        self.needle = True
+        self.needleStatus = True
 
     def removeNeedle(self):
-        self.needle = False
+        self.needleStatus = False
 
     def getNeedleStatus(self):
-        return self.needle
+        return self.needleStatus
 
     def getInsulinAvailable(self):
         return self.insulinAvailable
+
+    def setInsulinAvailable(self, value):
+        self.insulinAvailable = value
 
     def getCumulativeDose(self):
         return self.cumulativeDose
 
     def deliverDose(self, dose):
-        if self.needle == False:
+        if self.needleStatus == False or self.reservoirStatus == False:
             return
         if dose > self.insulinAvailable:
             dose = self.insulinAvailable
