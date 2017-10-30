@@ -10,12 +10,6 @@ import Battery
 import time
 
 # Initial/default Pump configuration parameters to store in db
-import sys
-
-import select
-
-from dateutil.tz import win
-
 first_name = 'Joe'
 last_name = 'Doe'
 
