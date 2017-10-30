@@ -16,7 +16,7 @@ class BloodGlucose:
 
 # runs the update on the blood glucose using the
     def getBG(self):
-        self.bg = self.bg + self.randomGenerator(-self.bgFluctuation, self.bgFluctuation)
+        self.bg += round(self.randomGenerator(-self.bgFluctuation, self.bgFluctuation))
         if self.bg < self.safeLevels[0] or self.bg > self.safeLevels[1]:
             self.alert = True
         else:

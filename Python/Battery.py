@@ -9,7 +9,7 @@ class Battery:
         self.batteryLevel = 100.0
 
     def getBattery(self):
-        self.batteryLevel = self.batteryLevel + self.randomGenerator(-1.0, 0.0)
+        self.batteryLevel = self.batteryLevel + self.randomGenerator(-0.01, 0.0)
         if self.batteryLevel < 0:
             self.batteryLevel += 1.0
 

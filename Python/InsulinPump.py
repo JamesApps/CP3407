@@ -60,7 +60,7 @@ def create_db():
 
     table_name3 = 'Battery'  # name of the table to be created
     table_3_column = ['battery_power_level']  # name of columns
-    table_3_column_field_type = ['INTEGER', 'INTEGER']  # column data types
+    table_3_column_field_type = ['FLOAT']  # column data types
 
     table_name4 = 'Clock'  # name of the table to be created
     table_4_column = ['clock_id', 'clock_time']  # name of columns
@@ -73,7 +73,7 @@ def create_db():
     table_name6 = 'Information_Log'  # name of the table to be created
     table_6_column = ['clock_time', 'battery_power_level', 'remaining_insulin',
                       'cumulative_dose', 'blood_glucose_level']  # name of columns
-    table_6_column_field_type = ['STRING', 'INTEGER', 'REAL', 'REAL', 'REAL']  # column data types
+    table_6_column_field_type = ['STRING', 'FLOAT', 'REAL', 'REAL', 'REAL']  # column data types
 
     try:
         # Connecting to the database file
@@ -150,6 +150,7 @@ def create_db():
     print('copied')
     conn.commit()
 
+
 def update_db(remaining_insulin, cumulative_dose, blood_glucose_level):
     clock_time = clock.getTime()
     battery_power_level = battery.getBattery()
@@ -162,10 +163,13 @@ def update_db(remaining_insulin, cumulative_dose, blood_glucose_level):
         c.execute('INSERT INTO Information_Log(clock_time, battery_power_level, '
                   'remaining_insulin, cumulative_dose, blood_glucose_level) VALUES(?, ?, ?, ?, ?)',
                   (clock_time, battery_power_level, remaining_insulin, cumulative_dose, blood_glucose_level))
-        print(clock_time, battery_power_level, remaining_insulin, cumulative_dose, blood_glucose_level)
+        print("\nInformation log entry to be added to DB:")
+        print('Clock:', clock_time, '\nBattery Power:', battery_power_level, '\nRemaining Insulin', remaining_insulin,
+              '\nCumulative Dose:', cumulative_dose, '\nBlood Glucose Level: ', blood_glucose_level)
 
         conn.commit()
         conn.close()
+
 
 def state_run(reservoir, r0, r1, r2):
     # The RUN schema defines the system state for normal operation. The software defined in
@@ -178,10 +182,8 @@ def state_run(reservoir, r0, r1, r2):
         # Raise Error
         print('Cumulative dose exceeds max daily dose')
     else:
-        # Get sugar level from database
-        print('dose running')
-
         # Get Comp Dose
+        print('Compute Dose')
         compdose = get_compdose(r0, r1, r2)
 
         # If the computed insulin dose is zero, don’t deliver any insulin
@@ -201,6 +203,10 @@ def state_run(reservoir, r0, r1, r2):
         # The single dose computed is too high. Restrict the dose delivered to the maximum single dose
         elif compdose > max_single_dose:
             dose = max_single_dose
+
+        # # In case of error in system, no dose
+        # else:
+        #     dose = 0
 
         reservoir.insulinAvailable -= dose
         reservoir.cumulativeDose += dose
@@ -276,6 +282,9 @@ def state_manual(insulin_available, cumulative_dose):
     insulin_available -= dose
     cumulative_dose += dose
 
+    # At the end of the manual mode, STATE set to run
+    STATE = 'Run'
+
 
 def state_startup():
     # The STARTUP schema models the behaviour of the system when the user switches on the
@@ -333,7 +342,7 @@ def state_test(needle, reservoir, insulin_available, battery, pump, sensor, deli
     elif not delivery:
         alarm("delivery_failure")
     else:
-        print('Passed Test')
+        print('Passed Test \n')
 
 
 def alarm(function):
@@ -379,30 +388,33 @@ def main():
 
     # Test get from data function
     data = get_db('Information_Log', 'remaining_insulin')
-    print(data)
+    # print(data)
 
     # Logging Loop
     while True:
         # Check Pump State
         while STATE == "Run":
-            print(str(clock.getTime()))
-            print(reservoir.insulinAvailable, reservoir.cumulativeDose, r0, r1)
-            print('run now')
-            #30 sec hardware test
-            time.sleep(5)
+            print('\nClock:', str(clock.getTime()))
+            print('Insulin Available:', reservoir.insulinAvailable, '\nCumulative Dose:', reservoir.cumulativeDose,
+                  '\nr0:', r0, '\nr1:', r1, '\n')
+
+            # 30 sec hardware test
+            time.sleep(10)
             state_test(reservoir.needleStatus, reservoir.reservoirStatus, reservoir.insulinAvailable,
                        battery.batteryLevel, reservoir.pumpStatus, bg_sensor.sensorStatus, reservoir.deliveryStatus)
             if clock.minutes % 1 == 0:
-                #timer is set to test now, remember to change it to % 10 to complete
+                # timer is set to test now, remember to change it to % 10 to complete
                 r2 = bg_sensor.getBG()
                 r2 += 1
-                print(r2)
-                print('timer works')
+                print('r2:', r2)
                 reservoir.insulinAvailable, reservoir.cumulativeDose, r0, r1 = state_run(reservoir, r0, r1, r2)
                 update_db(reservoir.insulinAvailable, reservoir.cumulativeDose, r2)
 
-
-            print("Run")
+            if clock.hours == 10 and clock.minutes == 22:
+                # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
+                # cumulative dose of insulin delivered is reset to 0.
+                print("DAILY RESET CUMULATIVE DOSE")
+                reservoir.cumulativeDose = 0
 
         while STATE == "Manual":
             print("Manual")
