@@ -2,14 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.Sign_in_Fragment">
+    tools:context=".Sign_in_Fragment">
 
     <TextView
         android:id="@+id/Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Welcom Use Insulin Pump! "
         android:textAlignment="center"
         android:textSize="40dp"
         android:textStyle="bold|italic" />
@@ -19,14 +18,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Please Sign In/Up"
         android:textAlignment="center"
         android:textSize="40dp" />
+
     <TableRow>
+
         <TextView
+            android:id="@+id/textusername"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Username："
             android:textSize="30sp"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             />
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:selectAllOnFocus="true"
             />
+
     </TableRow>
 
     <TableRow
@@ -44,9 +45,9 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textpassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Password："
             android:textSize="30dp" />
 
         <EditText
@@ -61,15 +62,14 @@
     android:id="@+id/bn_signin"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Sign In"
     android:layout_marginTop="@dimen/activity_horizontal_margin"
     android:textSize="30dp"
     />
+
     <Button
         android:id="@+id/bt_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
         android:textSize="30dp"
         />
 </TableLayout>
