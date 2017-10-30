@@ -11,9 +11,9 @@ class Temperature:
     def getTemp(self):
         self.temp = self.temp + self.randomGenerator(-1.0, 1.0)
         if self.temp < 20:
-            self.temp + 1.0
+            self.temp += 1.0
         if self.temp > 30:
-            self.temp - 1.0
+            self.temp -= 1.0
 
         return self.temp
 

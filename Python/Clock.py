@@ -52,7 +52,8 @@ class Clock(object):
 
     def getTime(self):
         # returns time as a list #
-        time = [self.hours, self.minutes, self.seconds]
+        self.setLocalTime()
+        time = ("{:02}:{:02}:{:02}" .format(self.hours, self.minutes, self.seconds))
         return time
 
     def setLocalTime(self):

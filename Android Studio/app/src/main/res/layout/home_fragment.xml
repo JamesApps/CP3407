@@ -11,7 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
+<<<<<<< HEAD
         android:text="Home"
+=======
+<<<<<<< HEAD
+        android:text="Home"
+=======
+>>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
         android:textSize="40dp"
         android:textStyle="bold" />
 
@@ -20,7 +27,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+<<<<<<< HEAD
         android:text="BG/Level"
+=======
+<<<<<<< HEAD
+        android:text="BG/Level"
+=======
+>>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
         android:textColor="@android:color/holo_red_dark"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -80,7 +94,14 @@
         android:layout_width="wrap_content"
         android:layout_height="87dp"
         android:layout_gravity="center_horizontal"
+<<<<<<< HEAD
         android:text="\t\t\tmmol/l"
+=======
+<<<<<<< HEAD
+        android:text="\t\t\tmmol/l"
+=======
+>>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -98,7 +119,14 @@
         android:id="@+id/textManualInjection"
         android:layout_width="98dp"
         android:layout_height="70dp"
+<<<<<<< HEAD
         android:text="Manaual Injection"
+=======
+<<<<<<< HEAD
+        android:text="Manaual Injection"
+=======
+>>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
         android:textSize="14dp"
         android:textStyle="bold|italic"
         android:layout_marginBottom="25dp"

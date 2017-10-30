@@ -15,8 +15,12 @@
         android:layout_toEndOf="@+id/textView"
         android:gravity="right"
         android:text="40u"
+<<<<<<< HEAD
         android:textSize="18sp"
         android:textStyle="bold" />
+=======
+        android:textSize="16dp" />
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
 
     <TextView
         android:id="@+id/textView"
@@ -53,24 +57,40 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_alignStart="@+id/textView10"
+=======
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
         android:layout_alignTop="@+id/InjectionSpeedseekbar"
         android:layout_marginRight="16dp"
         android:gravity="right"
         android:text="1s"
+<<<<<<< HEAD
         android:textSize="18sp"
         android:textStyle="bold" />
+=======
+        android:textSize="16dp"
+        android:layout_alignStart="@+id/textView10" />
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_alignBottom="@+id/InjectionSpeedbar"
         android:layout_toStartOf="@+id/textView"
         android:gravity="right"
         android:text="1u"
         android:textSize="18sp"
         android:textStyle="bold" />
+=======
+        android:gravity="right"
+        android:text="1u"
+        android:textSize="16dp"
+        android:layout_alignBottom="@+id/InjectionSpeedbar"
+        android:layout_toStartOf="@+id/textView" />
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
 
     <TextView
         android:id="@+id/textView3"
@@ -102,8 +122,12 @@
         android:layout_alignTop="@+id/InjectionSpeedseekbar"
         android:layout_toEndOf="@+id/textView"
         android:text="99S"
+<<<<<<< HEAD
         android:textSize="18sp"
         android:textStyle="bold" />
+=======
+        android:textSize="16dp" />
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
 
     <Button
         android:id="@+id/Inject"

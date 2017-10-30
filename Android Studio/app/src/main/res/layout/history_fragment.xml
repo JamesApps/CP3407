@@ -5,8 +5,23 @@
     tools:context="com.example.junpeng.insulinpump.HistoryFragment">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ShowGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
@@ -22,6 +37,14 @@
         android:textSize="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+<<<<<<< HEAD
+=======
+=======
+        android:textSize="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+>>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
+>>>>>>> c933d51673b6fde711204824e77f62da47e42bcd
         android:layout_marginBottom="34dp" />
 
 </RelativeLayout>
