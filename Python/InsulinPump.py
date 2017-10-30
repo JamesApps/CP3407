@@ -363,7 +363,6 @@ def main():
                        battery.batteryLevel, reservoir.pumpStatus, bg_sensor.sensorStatus, reservoir.deliveryStatus)
             if clock.minutes % 10 == 0:
                 r2 = bg_sensor.getBG()
-                r2 += 1
                 print('r2:', r2)
                 reservoir.insulinAvailable, reservoir.cumulativeDose, r0, r1 = state_run(reservoir, r0, r1, r2)
                 update_db(reservoir.insulinAvailable, reservoir.cumulativeDose, r2)
