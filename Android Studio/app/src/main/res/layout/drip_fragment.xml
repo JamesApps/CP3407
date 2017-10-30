@@ -11,10 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:text="Drip"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textSize="40dp"
         android:textStyle="bold" />
@@ -26,10 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-<<<<<<< HEAD
         android:text="Drip Quantity Per Day"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textSize="32dp" />
 
     <SeekBar
@@ -48,10 +42,7 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:layout_marginRight="16dp"
-<<<<<<< HEAD
         android:text="100u"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textSize="16dp"
         />
 
@@ -60,10 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
-<<<<<<< HEAD
         android:text="Drip Frequency Per day"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textSize="32dp" />
 
 
@@ -83,10 +71,7 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:layout_marginRight="16dp"
-<<<<<<< HEAD
         android:text="24"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textSize="16dp"
         />
 
@@ -95,10 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-<<<<<<< HEAD
         android:text="Set"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textSize="30dp" />
         />
 
