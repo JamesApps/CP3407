@@ -4,12 +4,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.junpeng.insulinpump.HistoryFragment">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:text="History"
-        android:textSize="30sp"/>
+        android:textSize="40dp"
+    android:textStyle="bold"
+        android:id="@+id/textView8" />
+    <Button
+        android:id="@+id/ShowGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ShowGraphs"
+        android:textSize="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp" />
 
 </RelativeLayout>
