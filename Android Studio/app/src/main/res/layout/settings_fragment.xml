@@ -11,10 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:text="Settings"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textSize="40dp"
         android:textStyle="bold"/>
@@ -72,11 +69,6 @@
         android:id="@+id/Set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-       android:layout_marginTop="10dp"
-        android:text="Set"
-=======
         android:layout_marginTop="10dp"
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textSize="30dp" />
 </LinearLayout>

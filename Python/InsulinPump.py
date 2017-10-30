@@ -361,8 +361,7 @@ def main():
             time.sleep(30)
             state_test(reservoir.needleStatus, reservoir.reservoirStatus, reservoir.insulinAvailable,
                        battery.batteryLevel, reservoir.pumpStatus, bg_sensor.sensorStatus, reservoir.deliveryStatus)
-            if clock.minutes % 1 == 0:
-                # timer is set to test now, remember to change it to % 10 to complete
+            if clock.minutes % 10 == 0:
                 r2 = bg_sensor.getBG()
                 r2 += 1
                 print('r2:', r2)

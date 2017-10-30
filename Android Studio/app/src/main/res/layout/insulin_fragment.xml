@@ -8,10 +8,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:text="Insulin Remain"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:layout_marginTop="18dp"
         android:textSize="40dp"
         android:textStyle="bold"
@@ -20,6 +16,13 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
+        android:layout_width="220dp"
+        android:layout_height="250dp"
+        android:src="@drawable/image_insulin"
+        android:layout_marginTop="25dp"
+        android:id="@+id/imageView2"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true" />
         android:layout_width="250dp"
         android:layout_height="300dp"
         android:src="@drawable/image_insulin"
@@ -32,18 +35,25 @@
         android:id="@+id/textViewInsulinRemain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:text="50%"
-=======
->>>>>>> 2792f432da5f7fdb84552f096f12a67d41b6a2f7
         android:textAllCaps="false"
         android:textAppearance="@android:style/TextAppearance.Widget.TextView"
         android:textColorHighlight="@android:color/background_dark"
         android:textSize="40dp"
         android:textStyle="bold|italic"
         android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewInsulinRemain"
+        android:layout_marginStart="17dp"
+        android:text="Estimate using time:50Hours"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
         android:layout_centerHorizontal="true"
         android:layout_marginTop="1dp" />
-
 
 </RelativeLayout>
