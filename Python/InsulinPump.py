@@ -10,6 +10,12 @@ import Battery
 import time
 
 # Initial/default Pump configuration parameters to store in db
+import sys
+
+import select
+
+from dateutil.tz import win
+
 first_name = 'Joe'
 last_name = 'Doe'
 
@@ -24,9 +30,6 @@ bg_sensor = BloodGlucose.BloodGlucose()
 clock = Clock.Clock()
 clock_time = clock.getTime()
 battery = Battery.Battery()
-
-# Default Run state on start
-STATE = "Run"
 
 sqlite_file = 'insulin_pump.sqlite'  # name of the sqlite database file
 
@@ -147,7 +150,6 @@ def create_db():
     conn = sqlite3.connect(sqlite_file)
     c = conn.cursor()
     c.execute(command, data_list)
-    print('copied')
     conn.commit()
 
 
@@ -272,20 +274,6 @@ def get_compdose(r0, r1, r2):
     return compdose
 
 
-def state_manual(insulin_available, cumulative_dose):
-    # The MANUAL schema models the system behaviour when it is in manual override mode.
-    # Notice that cumulative_dose is still updated but that no safety checks are applied until the
-    # system is reset to automatic mode.
-
-    # One does for each button press
-    dose = 1
-    insulin_available -= dose
-    cumulative_dose += dose
-
-    # At the end of the manual mode, STATE set to run
-    STATE = 'Run'
-
-
 def state_startup():
     # The STARTUP schema models the behaviour of the system when the user switches on the
     # device. It is assumed that the user’s blood sugar at that stage is OK. Note that
@@ -304,22 +292,34 @@ def state_startup():
         r1 = safe_max
         reservoir = InsulinReservoir.InsulinReservoir(capacity_insulin, 0)
     dose = 0
-    # TEST
-    return dose, r0, r1, reservoir
+    state = 'Run'
+    return dose, r0, r1, reservoir, state
 
 
-def state_reset(reservoir):
+def state_manual(reservoir):
+    # The MANUAL schema models the system behaviour when it is in manual override mode.
+    # Notice that cumulative_dose is still updated but that no safety checks are applied until the
+    # system is reset to automatic mode.
+
+    # One dose for each button press
+    dose = 1
+    reservoir.insulinAvailable -= dose
+    reservoir.cumulativeDose += dose
+
+    # At the end of the manual mode, state set to run
+    state = 'Run'
+    return reservoir.insulinAvailable, reservoir.cumulativeDose, state
+
+
+def state_reset():
     # The RESET schema models the system when the user changes the insulin reservoir. Notice
     # that this does not require the device to be switched off. The design of the reservoir is such
     # that it is not possible to insert reservoirs that are partially full.
 
-    if reservoir:
-        insulin_available = capacity_insulin
-    else:
-        alarm("reservoir_removed")
-
-    return insulin_available
-    # TEST
+    insulin_available = capacity_insulin
+    # At the end of the reset mode, state set to run
+    state = 'Run'
+    return insulin_available, state
 
 
 def state_test(needle, reservoir, insulin_available, battery, pump, sensor, delivery):
@@ -383,23 +383,18 @@ def main():
     # The loop State change to either manual injection, or
 
     # Start Up Function
-    dose, r0, r1, reservoir = state_startup()
-    print(dose, r0, r1, reservoir.insulinAvailable, reservoir.cumulativeDose)
-
-    # Test get from data function
-    data = get_db('Information_Log', 'remaining_insulin')
-    # print(data)
+    dose, r0, r1, reservoir, state = state_startup()
 
     # Logging Loop
     while True:
         # Check Pump State
-        while STATE == "Run":
+        while state == "Run":
             print('\nClock:', str(clock.getTime()))
             print('Insulin Available:', reservoir.insulinAvailable, '\nCumulative Dose:', reservoir.cumulativeDose,
                   '\nr0:', r0, '\nr1:', r1, '\n')
 
             # 30 sec hardware test
-            time.sleep(10)
+            time.sleep(30)
             state_test(reservoir.needleStatus, reservoir.reservoirStatus, reservoir.insulinAvailable,
                        battery.batteryLevel, reservoir.pumpStatus, bg_sensor.sensorStatus, reservoir.deliveryStatus)
             if clock.minutes % 1 == 0:
@@ -410,17 +405,27 @@ def main():
                 reservoir.insulinAvailable, reservoir.cumulativeDose, r0, r1 = state_run(reservoir, r0, r1, r2)
                 update_db(reservoir.insulinAvailable, reservoir.cumulativeDose, r2)
 
-            if clock.hours == 10 and clock.minutes == 22:
+            if clock.hours == 0 and clock.minutes == 0:
                 # At the beginning of each 24 hour period (indicated by clock =00:00:00), the
                 # cumulative dose of insulin delivered is reset to 0.
                 print("DAILY RESET CUMULATIVE DOSE")
                 reservoir.cumulativeDose = 0
 
-        while STATE == "Manual":
-            print("Manual")
+            # EVENT FOR MANUAL MODE
+            # if event:
+            #     state = 'Manual'
 
-        while STATE == "Reset":
-            print("Reset")
+            # EVENT FOR RESET MODE
+            # if event:
+            #     state = 'Reset'
+
+        while state == "Manual":
+            print('Entered Manual Mode')
+            reservoir.insulinAvailable, reservoir.cumulativeDose, state = state_manual(reservoir)
+
+        while state == "Reset":
+            print('Entered Reset Mode')
+            reservoir.insulinAvailable, state = state_reset()
 
 
 if __name__ == '__main__':
